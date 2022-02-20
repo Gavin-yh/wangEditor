@@ -118,6 +118,9 @@ export default function (editor: Editor, text: string, languageType: string): Pa
                             // @ts-ignore
                             let code = $code.value
 
+                            // TODO(GYH)过滤标签，防止xss
+                            code = code.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
                             // 高亮渲染
                             if (editor.highlight) {
                                 formatCode = editor.highlight.highlightAuto(code).value

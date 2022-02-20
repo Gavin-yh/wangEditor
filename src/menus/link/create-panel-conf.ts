@@ -53,8 +53,10 @@ export default function (editor: Editor, text: string, link: string): PanelConf 
          *
          * 同上，列表无法插入链接的原因，是因为在insertLink, 处理text时有问题。
          */
+        const resultText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;') // Link xss
+        const retulsLink = link.replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
-        const $elem: DomElement = $(`<a href="${link}" target="_blank">${text}</a>`)
+        const $elem: DomElement = $(`<a href="${retulsLink}" target="_blank">${resultText}</a>`)
 
         // fix: 字符转义问题，https://xxx.org?bar=1&macro=2 => https://xxx.org?bar=1¯o=2
         $elem.elems[0].innerText = text
