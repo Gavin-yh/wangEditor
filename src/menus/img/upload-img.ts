@@ -62,13 +62,13 @@ class UploadImg {
             // 因为下面要单引号拼接字符串, 所以要将单引号替换成双引号
             altText = altText.replace("'", '"')
 
-            altText = `alt='${altText}'`
+            altText = `alt='${altText}' `
         }
 
         // 先插入图片，无论是否能成功
         editor.cmd.do(
             'insertHTML',
-            `<img src='${resultSrc}' ${altText} ${hrefText} style="max-width:100%;" contenteditable="false"/>`
+            `<img src='${resultSrc}'${altText}${hrefText} style="max-width:100%;" contenteditable="false"/>`
         )
         // 执行回调函数
         config.linkImgCallback(src, alt, href)
