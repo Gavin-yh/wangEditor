@@ -51,7 +51,7 @@ class UploadImg {
         if (href) {
             hrefText = href.replace("'", '"')
 
-            hrefText = `data-href='${encodeURIComponent(hrefText)}'`
+            hrefText = `data-href='${encodeURIComponent(hrefText)}' `
         }
 
         let altText = ''
@@ -68,7 +68,7 @@ class UploadImg {
         // 先插入图片，无论是否能成功
         editor.cmd.do(
             'insertHTML',
-            `<img src='${resultSrc}'${altText}${hrefText} style="max-width:100%;" contenteditable="false"/>`
+            `<img src='${resultSrc}' ${altText}${hrefText}style="max-width:100%;" contenteditable="false"/>`
         )
         // 执行回调函数
         config.linkImgCallback(src, alt, href)
